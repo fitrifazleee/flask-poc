@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <button id="clickBtn">Tekan Saya</button>
+    <p>Total Clicks: {{ logs|length }}</p>
+    <ul>
+        {% for log in logs %}
+        <li>{{ log }}</li>
+        {% endfor %}
+    </ul>
+    <script>
+        document.getElementById('clickBtn').addEventListener('click', function() {
+            fetch('/click', { method: 'POST' })
+            .then(response => location.reload());
+        });
+    </script>
+</body>
+</html>
