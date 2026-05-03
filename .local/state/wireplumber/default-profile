@@ -1,0 +1,2 @@
+[default-profile]
+alsa_card.platform-107c706400.hdmi=output:hdmi-stereo
