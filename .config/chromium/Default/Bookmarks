@@ -1,0 +1,58 @@
+{
+   "checksum": "a218ead5b18b1fe73d191d356d9a833d",
+   "roots": {
+      "bookmark_bar": {
+         "children": [  ],
+         "date_added": "13421987628151156",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "date_added": "13421987860868039",
+            "date_last_used": "0",
+            "guid": "9acb04a4-687d-42bd-ae3e-75f0c2d6ee96",
+            "id": "5",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Node-RED : Flow 1",
+            "type": "url",
+            "url": "http://192.168.6.19:1880/#flow/0317ca686336af27"
+         }, {
+            "date_added": "13421995473561825",
+            "date_last_used": "0",
+            "guid": "be484607-a454-4e9e-92e6-67848ac5ae67",
+            "id": "7",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "QUANTUM AI",
+            "type": "url",
+            "url": "https://demokit-ai-production.up.railway.app/"
+         } ],
+         "date_added": "13421987628151161",
+         "date_last_used": "0",
+         "date_modified": "13421995473561825",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13421987628151164",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

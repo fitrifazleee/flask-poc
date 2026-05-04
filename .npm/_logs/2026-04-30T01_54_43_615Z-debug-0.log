@@ -1,0 +1,19 @@
+0 verbose cli /usr/bin/node /usr/bin/npm
+1 info using npm@10.9.2
+2 info using node@v22.15.0
+3 silly config load:file:/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/home/galactic/.node-red/.npmrc
+5 silly config load:file:/home/galactic/.npmrc
+6 silly config load:file:/usr/etc/npmrc
+7 verbose title npm rebuild
+8 verbose argv "rebuild" "--no-progress" "--no-update-notifier" "--no-fund"
+9 verbose logfile logs-max:10 dir:/home/galactic/.npm/_logs/2026-04-30T01_54_43_615Z-
+10 verbose logfile /home/galactic/.npm/_logs/2026-04-30T01_54_43_615Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:1098907648 maxSize:274726912 maxEntrySize:137363456
+13 verbose cwd /home/galactic/.node-red
+14 verbose os Linux 6.1.0-rpi4-rpi-v8
+15 verbose node v22.15.0
+16 verbose npm  v10.9.2
+17 verbose exit 0
+18 info ok
