@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-rm -rf "/home/galactic/apps/thonny"
-rm -f "/home/galactic/.local/share/applications/Thonny.desktop"

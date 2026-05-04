@@ -1,6 +1,0 @@
-2026/05/03-15:39:28.211 5 Reusing MANIFEST /home/galactic/.config/chromium/Default/Local Storage/leveldb/MANIFEST-000001
-2026/05/03-15:39:28.301 5 Recovering log #4
-2026/05/03-15:39:28.309 5 Reusing old log /home/galactic/.config/chromium/Default/Local Storage/leveldb/000004.log 
-2026/05/03-15:56:27.392 5 Level-0 table #7: started
-2026/05/03-15:56:27.412 5 Level-0 table #7: 20860 bytes OK
-2026/05/03-15:56:27.425 5 Delete type=0 #4
