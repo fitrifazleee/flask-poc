@@ -7,8 +7,12 @@ import subprocess
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BTN_IMAGE = os.path.join(BASE_DIR, 'button_target.png')
 DROP_IMAGE = os.path.join(BASE_DIR, 'dropdown_target.png')
+<<<<<<< HEAD
 TARGET_URL = "https://flask-poc.vercel.app"
 
+=======
+TARGET_URL = "https://flask-i9lyr06rw-fitrifazleee-7841s-projects.vercel.app/click"
+>>>>>>> 07800790e35ffcca15aa6eab6c8fae1deca864d5
 def launch_browser():
     print(f"[{time.strftime('%H:%M:%S')}] Browser missing or closed. Launching Chromium...")
     

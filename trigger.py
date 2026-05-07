@@ -1,7 +1,11 @@
 import requests
 
 # This is the URL you just got from Vercel
+<<<<<<< HEAD
 URL = "https://flask-poc.vercel.app/click"
+=======
+URL = "https://flask-i9lyr06rw-fitrifazleee-7841s-projects.vercel.app/click"
+>>>>>>> 07800790e35ffcca15aa6eab6c8fae1deca864d5
 print("Sending 'Button Press' signal to the cloud...")
 
 try:
