@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .hidden { display: none; }
+        .btn { padding: 15px 25px; margin: 10px; cursor: pointer; font-weight: bold; background-color: #ddd; border: 1px solid #999; border-radius: 5px; }
+        .true-btn { background-color: #4CAF50; color: white; border: none; }
+        .dropdown-menu { margin-top: 20px; padding: 15px; border: 2px dashed #666; background-color: #f9f9f9; width: 300px;}
+        .drop-item { display: block; width: 100%; margin: 5px 0; padding: 10px; text-align: left; cursor: pointer; }
+    </style>
+</head>
 <body>
-    <button id="clickBtn">Tekan Saya</button>
-    <p>Total Clicks: {{ logs|length }}</p>
+    <h2>Surfactor Dashboard Automation Test</h2>
+
+    <div id="mainButtons">
+        <button class="btn">Dummy A - Reboot</button>
+        <button id="trueBtn" class="btn true-btn">Tekan Saya</button>
+        <button class="btn">Dummy B - Clear Cache</button>
+    </div>
+
+    <div id="dropdownMenu" class="hidden dropdown-menu">
+        <h4>Select Action:</h4>
+        <button class="drop-item">Option 1: Calibrate Sensor (Fake)</button>
+        <button class="drop-item">Option 2: Run Diagnostics (Fake)</button>
+        <button id="correctOption" class="drop-item" style="background-color: #ffeb3b;">Option 3: Log Time (True)</button>
+        <button class="drop-item">Option 4: Reset Network (Fake)</button>
+        <button class="drop-item">Option 5: Export CSV (Fake)</button>
+        <button class="drop-item">Option 6: Ping Server (Fake)</button>
+    </div>
+
+    <hr>
+    <p><strong>Total Logs:</strong> {{ logs|length }}</p>
     <ul>
         {% for log in logs %}
         <li>{{ log }}</li>
         {% endfor %}
     </ul>
+
     <script>
-        document.getElementById('clickBtn').addEventListener('click', function() {
+        // Logic to reveal the dropdown
+        document.getElementById('trueBtn').addEventListener('click', function() {
+            document.getElementById('dropdownMenu').classList.remove('hidden');
+        });
+
+        // Logic to actually log the time
+        document.getElementById('correctOption').addEventListener('click', function() {
             fetch('/click', { method: 'POST' })
             .then(response => location.reload());
         });
