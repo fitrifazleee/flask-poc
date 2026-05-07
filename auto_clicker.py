@@ -27,8 +27,8 @@ def launch_browser():
 def search_and_click(image_path, description):
     print(f"Scanning screen for: {description}...")
     
-    # Give the vision engine 10 attempts (6 seconds total) to find the target
-    for attempt in range(10):
+    # Give the vision engine 5 attempts (6 seconds total) to find the target
+    for attempt in range(5):
         try:
             location = pyautogui.locateCenterOnScreen(image_path, confidence=0.5)
             if location:
