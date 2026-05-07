@@ -7,8 +7,7 @@ import subprocess
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BTN_IMAGE = os.path.join(BASE_DIR, 'button_target.png')
 DROP_IMAGE = os.path.join(BASE_DIR, 'dropdown_target.png')
-TARGET_URL = "https://flask-c88rla8s0-fitrifazleee-7841s-projects.vercel.app" 
-
+TARGET_URL = "https://flask-poc.vercel.app"
 def launch_browser():
     print(f"[{time.strftime('%H:%M:%S')}] Browser missing or closed. Launching Chromium...")
     
@@ -30,7 +29,7 @@ def search_and_click(image_path, description):
             location = pyautogui.locateCenterOnScreen(image_path, confidence=0.8)
             if location:
                 print(f"-> Target locked at {location}! Executing click.")
-                pyautogui.moveTo(location.x, location.y, duration=0.5, tween=pyautogui.easeInOutQuad)
+                pyautogui.moveTo(location.x, location.y, duration=0.75, tween=pyautogui.easeInOutQuad)
                 pyautogui.click()
                 return True
         except Exception as e:
