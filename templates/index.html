@@ -8,48 +8,69 @@
             padding: 20px; 
             background-color: white;
         }
-        .hidden { display: none; }
         
         /* Main Top Row Buttons */
         .btn { 
-            padding: 15px 25px; 
+            padding: 12px 20px; 
             margin: 10px; 
             cursor: pointer; 
-            font-weight: bold; 
-            background-color: #e0e0e0; 
-            color: black;
-            border: 1px solid #999; 
+            font-size: 16px;
+            border: 1px solid #ccc; 
             border-radius: 5px; 
+            background-color: #f8f9fa;
         }
         
-        /* The Target Green Button (Matches button_target.png) */
+        /* The Target Green Button */
         .true-btn { 
             background-color: #4CAF50; 
             color: white; 
-            border: 1px solid #4CAF50; 
+            border: none; 
+            font-weight: bold;
         }
         
-        /* Dropdown Container */
-        .dropdown-menu { 
-            margin-top: 20px; 
-            padding: 15px; 
-            border: 2px dashed #666; 
-            background-color: #f9f9f9; 
-            width: 300px;
+        /* THE CRITICAL FIX: The Relative Container */
+        /* This keeps the floating menu attached to the button */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
         }
-        
-        /* Dropdown Items (Matches dropdown_target.png) */
-        .drop-item { 
-            display: block; 
-            width: 100%; 
-            margin: 5px 0; 
-            padding: 8px 10px; 
-            text-align: left; 
+
+        /* The Floating Dropdown Menu */
+        .dropdown-menu {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%; /* Puts it directly below the button */
+            left: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.15); /* Adds the floating shadow */
+            z-index: 100; /* Ensures it floats ON TOP of other elements */
+            min-width: 220px;
+            padding: 5px 0;
+        }
+
+        /* The class that JavaScript adds to make it visible */
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        /* The 6 Option Buttons inside the menu */
+        .drop-item {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            text-align: left;
+            background: none;
+            border: none;
             cursor: pointer;
-            background-color: #f0f0f0;
-            border: 1px solid #888;
-            color: black;
-            font-size: 14px;
+            font-size: 15px;
+            color: #333;
+        }
+
+        /* Highlight effect when hovering over options */
+        .drop-item:hover {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -58,18 +79,21 @@
 
     <div id="mainButtons">
         <button class="btn">Reboot</button>
-        <button id="trueBtn" class="btn true-btn">Tekan Saya</button>
-        <button class="btn">Clear Cache</button>
-    </div>
+        
+        <div class="dropdown-container">
+            <button id="trueBtn" class="btn true-btn">Tekan Saya</button>
+            
+            <div id="dropdownMenu" class="dropdown-menu">
+                <button class="drop-item">Option 1: Calibrate Sensor</button>
+                <button class="drop-item">Option 2: Run Diagnostics</button>
+                <button id="correctOption" class="drop-item">Option 3: Log Time</button>
+                <button class="drop-item">Option 4: Reset Network</button>
+                <button class="drop-item">Option 5: Export CSV</button>
+                <button class="drop-item">Option 6: Ping Server</button>
+            </div>
+        </div>
 
-    <div id="dropdownMenu" class="hidden dropdown-menu">
-        <h4>Select Action:</h4>
-        <button class="drop-item">Option 1: Calibrate Sensor</button>
-        <button class="drop-item">Option 2: Run Diagnostics</button>
-        <button id="correctOption" class="drop-item">Option 3: Log Time</button>
-        <button class="drop-item">Option 4: Reset Network</button>
-        <button class="drop-item">Option 5: Export CSV</button>
-        <button class="drop-item">Option 6: Ping Server</button>
+        <button class="btn">Clear Cache</button>
     </div>
 
     <hr>
@@ -81,9 +105,9 @@
     </ul>
 
     <script>
-        // Logic to reveal the dropdown menu
+        // Logic to toggle the floating dropdown on/off
         document.getElementById('trueBtn').addEventListener('click', function() {
-            document.getElementById('dropdownMenu').classList.remove('hidden');
+            document.getElementById('dropdownMenu').classList.toggle('show');
         });
 
         // Logic to shoot the data to the Python backend and refresh
