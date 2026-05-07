@@ -21,16 +21,16 @@ def launch_browser():
         stderr=subprocess.DEVNULL
     )
     
-    print("Waiting 5 seconds for Vercel to fully load...")
-    time.sleep(5)
+    print("Waiting 10 seconds for Vercel to fully load...")
+    time.sleep(10)
 
 def search_and_click(image_path, description):
     print(f"Scanning screen for: {description}...")
     
-    # Give the vision engine 10 attempts (6 seconds total) to find the target
-    for attempt in range(10):
+    # Give the vision engine 3 attempts (6 seconds total) to find the target
+    for attempt in range(3):
         try:
-            location = pyautogui.locateCenterOnScreen(image_path, confidence=0.5)
+            location = pyautogui.locateCenterOnScreen(image_path, confidence=0.8)
             if location:
                 print(f"-> Target locked at {location}! Executing click.")
                 pyautogui.moveTo(location.x, location.y, duration=0.8, tween=pyautogui.easeInOutQuad)
