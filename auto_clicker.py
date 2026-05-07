@@ -8,12 +8,13 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BTN_IMAGE = os.path.join(BASE_DIR, 'button_target.png')
 DROP_IMAGE = os.path.join(BASE_DIR, 'dropdown_target.png')
 TARGET_URL = "https://flask-poc.vercel.app"
+
 def launch_browser():
     print(f"[{time.strftime('%H:%M:%S')}] Browser missing or closed. Launching Chromium...")
     
     # DEVNULL acts as a black hole to swallow all those annoying Chromium DEPRECATED_ENDPOINT errors
     subprocess.Popen(
-        ['chromium-browser', '--kiosk', TARGET_URL],
+        ['chromium-browser', TARGET_URL],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
     )
