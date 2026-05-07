@@ -2,16 +2,59 @@
 <html>
 <head>
     <style>
-        body { font-family: sans-serif; padding: 20px; }
+        /* Base Page Styling */
+        body { 
+            font-family: sans-serif; 
+            padding: 20px; 
+            background-color: white;
+        }
         .hidden { display: none; }
-        .btn { padding: 15px 25px; margin: 10px; cursor: pointer; font-weight: bold; background-color: #ddd; border: 1px solid #999; border-radius: 5px; }
-        .true-btn { background-color: #4CAF50; color: white; border: none; }
-        .dropdown-menu { margin-top: 20px; padding: 15px; border: 2px dashed #666; background-color: #f9f9f9; width: 300px;}
-        .drop-item { display: block; width: 100%; margin: 5px 0; padding: 10px; text-align: left; cursor: pointer; }
+        
+        /* Main Top Row Buttons */
+        .btn { 
+            padding: 15px 25px; 
+            margin: 10px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            background-color: #e0e0e0; 
+            color: black;
+            border: 1px solid #999; 
+            border-radius: 5px; 
+        }
+        
+        /* The Target Green Button (Matches button_target.png) */
+        .true-btn { 
+            background-color: #4CAF50; 
+            color: white; 
+            border: 1px solid #4CAF50; 
+        }
+        
+        /* Dropdown Container */
+        .dropdown-menu { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border: 2px dashed #666; 
+            background-color: #f9f9f9; 
+            width: 300px;
+        }
+        
+        /* Dropdown Items (Matches dropdown_target.png) */
+        .drop-item { 
+            display: block; 
+            width: 100%; 
+            margin: 5px 0; 
+            padding: 8px 10px; 
+            text-align: left; 
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: 1px solid #888;
+            color: black;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <h2>Dashboard Automated click Test</h2>
+    <h2>Dashboard Automated Click Test</h2>
 
     <div id="mainButtons">
         <button class="btn">Reboot</button>
@@ -21,12 +64,12 @@
 
     <div id="dropdownMenu" class="hidden dropdown-menu">
         <h4>Select Action:</h4>
-        <button class="drop-item">Option 1: Calibrate Sensor </button>
-        <button class="drop-item">Option 2: Run Diagnostics </button>
-        <button id="correctOption" class="drop-item">Option 3: Log Time </button>
-        <button class="drop-item">Option 4: Reset Network </button>
-        <button class="drop-item">Option 5: Export CSV </button>
-        <button class="drop-item">Option 6: Ping Server </button>
+        <button class="drop-item">Option 1: Calibrate Sensor</button>
+        <button class="drop-item">Option 2: Run Diagnostics</button>
+        <button id="correctOption" class="drop-item">Option 3: Log Time</button>
+        <button class="drop-item">Option 4: Reset Network</button>
+        <button class="drop-item">Option 5: Export CSV</button>
+        <button class="drop-item">Option 6: Ping Server</button>
     </div>
 
     <hr>
@@ -38,12 +81,12 @@
     </ul>
 
     <script>
-        // Logic to reveal the dropdown
+        // Logic to reveal the dropdown menu
         document.getElementById('trueBtn').addEventListener('click', function() {
             document.getElementById('dropdownMenu').classList.remove('hidden');
         });
 
-        // Logic to actually log the time
+        // Logic to shoot the data to the Python backend and refresh
         document.getElementById('correctOption').addEventListener('click', function() {
             fetch('/click', { method: 'POST' })
             .then(response => location.reload());
