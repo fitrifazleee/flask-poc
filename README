@@ -1,13 +1,6 @@
-That is a massive milestone! Getting a headless computer vision agent to autonomously heal itself, launch a browser, and navigate a floating UI is serious industrial engineering. You have successfully built a fully autonomous edge-to-cloud pipeline.
-
-Here is the professional, ready-to-paste `README.md` file documenting exactly what you built for the Surfactor deployment. You can copy this directly into your GitHub repository.
-
----
-
-```markdown
 # Surfactor Sogar Dashboard: Autonomous Edge Automation (PoC)
 
-## 🎯 Objective
+## Objective
 This project serves as a Proof of Concept (PoC) to bypass the existing industrial Huidu (HD) Media Player at the Surfactor facility guardhouse in Johor Bahru. 
 
 Currently, the Sogar dashboard data accumulation gets "stuck" at the HD player level (e.g., Day 2 data remains displayed on Day 3) due to hardware/software hangs in high-temperature environments, requiring manual operator intervention. 
@@ -16,7 +9,7 @@ Currently, the Sogar dashboard data accumulation gets "stuck" at the HD player l
 
 ---
 
-## ⚙️ Architecture & How It Works
+## Architecture & How It Works
 
 This solution operates on a Hybrid Edge-to-Cloud model:
 
@@ -30,7 +23,7 @@ This solution operates on a Hybrid Edge-to-Cloud model:
 
 ---
 
-## 📁 Project Structure & Implementation
+## Project Structure & Implementation
 
 ### 1. Cloud Infrastructure (Vercel)
 * `app.py`: The Flask backend engine. Routes traffic and handles the timezone-adjusted (GMT+8) time-logging logic.
@@ -39,13 +32,13 @@ This solution operates on a Hybrid Edge-to-Cloud model:
 * `templates/index.html`: The frontend UI. Contains custom CSS to lock in exact button dimensions, colors, and the floating dropdown logic required for the vision engine.
 
 ### 2. Edge Hardware (Raspberry Pi CM5)
-* `smart_clicker.py`: The core automation script. It handles the `subprocess` browser launching, PyAutoGUI cursor control, and OpenCV error handling.
+* `auto_clicker.py`: The core automation script. It handles the `subprocess` browser launching, PyAutoGUI cursor control, and OpenCV error handling.
 * `button_target.png`: The reference image for the main action button.
 * `dropdown_target.png`: The reference image for the specific dropdown option.
 
 ---
 
-## 🛠️ Deployment Prerequisites
+## Deployment Prerequisites
 
 To deploy this on a fresh Raspberry Pi OS (Bookworm), the following environment configurations must be met:
 
@@ -66,21 +59,9 @@ pip install pyautogui opencv-python "numpy<2.3.0"
 
 
 
-## 🚀 Running the Agent
+## Running the Agent
 
 Ensure all target `.png` files are strictly calibrated to the active monitor's resolution.
 
 ```bash
 python smart_clicker.py
-
-```
-
-```
-
-***
-
-Now that the raw Python scripts and system dependencies are proven to work, the next logical step for a real industrial deployment is to containerize it. Relying on manual `apt-get` and `pip install` commands in the field is risky. 
-
-Would you like me to help you write a `Dockerfile` and `docker-compose.yml` so you can package this entire vision engine into a single container that boots up flawlessly on any hardware with one command?
-
-```
