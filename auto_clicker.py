@@ -27,10 +27,10 @@ def launch_browser():
 def search_and_click(image_path, description):
     print(f"Scanning screen for: {description}...")
     
-    # Give the vision engine 3 attempts (6 seconds total) to find the target
-    for attempt in range(3):
+    # Give the vision engine 5 attempts (6 seconds total) to find the target
+    for attempt in range(5):
         try:
-            location = pyautogui.locateCenterOnScreen(image_path, confidence=0.8)
+            location = pyautogui.locateCenterOnScreen(image_path, confidence=0.5)
             if location:
                 print(f"-> Target locked at {location}! Executing click.")
                 pyautogui.moveTo(location.x, location.y, duration=0.8, tween=pyautogui.easeInOutQuad)
@@ -60,7 +60,7 @@ def run_automation_flow():
 
     # STEP 2: Wait for HTML to render the Dropdown
     print("Main button clicked. Waiting for dropdown UI to render...")
-    time.sleep(1.5)
+    time.sleep(2)
 
     # STEP 3: Find the Correct Dropdown Option
     if search_and_click(DROP_IMAGE, "'Log Time' Option"):
