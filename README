@@ -1,0 +1,86 @@
+That is a massive milestone! Getting a headless computer vision agent to autonomously heal itself, launch a browser, and navigate a floating UI is serious industrial engineering. You have successfully built a fully autonomous edge-to-cloud pipeline.
+
+Here is the professional, ready-to-paste `README.md` file documenting exactly what you built for the Surfactor deployment. You can copy this directly into your GitHub repository.
+
+---
+
+```markdown
+# Surfactor Sogar Dashboard: Autonomous Edge Automation (PoC)
+
+## 🎯 Objective
+This project serves as a Proof of Concept (PoC) to bypass the existing industrial Huidu (HD) Media Player at the Surfactor facility guardhouse in Johor Bahru. 
+
+Currently, the Sogar dashboard data accumulation gets "stuck" at the HD player level (e.g., Day 2 data remains displayed on Day 3) due to hardware/software hangs in high-temperature environments, requiring manual operator intervention. 
+
+**The Solution:** This project replaces the passive display pipeline with a Raspberry Pi CM5 Edge Controller. It utilizes a Python-based Computer Vision agent (OpenCV + PyAutoGUI) to actively monitor the Vercel-hosted cloud dashboard, automatically force-inject data updates, and self-heal the browser environment if it crashes, entirely removing the need for human intervention.
+
+---
+
+## ⚙️ Architecture & How It Works
+
+This solution operates on a Hybrid Edge-to-Cloud model:
+
+1. **The Cloud Frontend (Vercel + Flask):** The dashboard is hosted remotely. It features a secure, multi-step UI including a main action button and a hidden floating dropdown menu to prevent accidental data logs.
+2. **The Vision Agent (`smart_clicker.py`):** Running locally on the CM5, this script acts as an autonomous operator. 
+3. **The Execution Flow:**
+   * **Self-Healing:** The script checks if the Chromium browser is open. If not, it communicates directly with the Linux OS to launch Chromium in strict `--kiosk` mode.
+   * **Visual Scanning (OpenCV):** It scans the live monitor pixel-by-pixel looking for an 80% visual match of the target UI elements.
+   * **Autonomous Execution:** Once it locks onto the green "Tekan Saya" button, it takes control of the physical mouse cursor, clicks it, waits for the floating dropdown to render, visually locates the blue "Option 3: Log Time" text, and clicks it to inject the new data timestamp to the server.
+   * **Cron Automation:** This entire sequence is triggered automatically on a set schedule via Linux Crontab.
+
+---
+
+## 📁 Project Structure & Implementation
+
+### 1. Cloud Infrastructure (Vercel)
+* `app.py`: The Flask backend engine. Routes traffic and handles the timezone-adjusted (GMT+8) time-logging logic.
+* `vercel.json`: The serverless configuration file directing traffic to the Python backend.
+* `requirements.txt`: Defines the exact cloud dependencies (`Flask==3.0.3`, `requests==2.31.0`).
+* `templates/index.html`: The frontend UI. Contains custom CSS to lock in exact button dimensions, colors, and the floating dropdown logic required for the vision engine.
+
+### 2. Edge Hardware (Raspberry Pi CM5)
+* `smart_clicker.py`: The core automation script. It handles the `subprocess` browser launching, PyAutoGUI cursor control, and OpenCV error handling.
+* `button_target.png`: The reference image for the main action button.
+* `dropdown_target.png`: The reference image for the specific dropdown option.
+
+---
+
+## 🛠️ Deployment Prerequisites
+
+To deploy this on a fresh Raspberry Pi OS (Bookworm), the following environment configurations must be met:
+
+1. **Display Server:** The OS must be switched from Wayland to **X11** via `raspi-config` to allow GUI automation.
+2. **System Dependencies:** The OpenCV engine requires the following C-libraries:
+   ```bash
+   sudo apt-get update && sudo apt-get install libgl1-mesa-glx libglib2.0-0 libsm6 libxext6 libxrender-dev libopenblas-dev libatlas-base-dev scrot python3-tk python3-dev -y
+
+```
+
+3. **Python Environment:** ```bash
+pip install pyautogui opencv-python "numpy<2.3.0"
+```
+*(Note: OpenCV 4.12+ strictly requires numpy versions below 2.3.0).*
+
+
+```
+
+
+
+## 🚀 Running the Agent
+
+Ensure all target `.png` files are strictly calibrated to the active monitor's resolution.
+
+```bash
+python smart_clicker.py
+
+```
+
+```
+
+***
+
+Now that the raw Python scripts and system dependencies are proven to work, the next logical step for a real industrial deployment is to containerize it. Relying on manual `apt-get` and `pip install` commands in the field is risky. 
+
+Would you like me to help you write a `Dockerfile` and `docker-compose.yml` so you can package this entire vision engine into a single container that boots up flawlessly on any hardware with one command?
+
+```
