@@ -30,7 +30,7 @@ def search_and_click(image_path, description):
     # Give the vision engine 5 attempts (6 seconds total) to find the target
     for attempt in range(5):
         try:
-            location = pyautogui.locateCenterOnScreen(image_path, confidence=0.5)
+            location = pyautogui.locateCenterOnScreen(image_path, confidence=0.8)
             if location:
                 print(f"-> Target locked at {location}! Executing click.")
                 pyautogui.moveTo(location.x, location.y, duration=0.8, tween=pyautogui.easeInOutQuad)
